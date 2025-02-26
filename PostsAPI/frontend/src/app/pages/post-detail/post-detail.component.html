@@ -1,0 +1,42 @@
+<h2>Detalles del Post</h2>
+
+<div *ngIf="post; else loading">
+  <div *ngIf="!isEditing">
+    <h3>{{ post?.title }}</h3>
+    <p>{{ post?.content }}</p>
+    <p><strong>Categoría:</strong> {{ post?.category?.name }}</p>
+    <div class="button-group">
+      <button class="edit-button" (click)="toggleEdit()">Editar</button>
+      <button class="delete-button" (click)="deletePost()">Eliminar</button>
+    </div>
+  </div>
+
+  <div *ngIf="isEditing">
+    <h4>Editar Post</h4>
+    <input [(ngModel)]="editedTitle" placeholder="title" />
+    <textarea [(ngModel)]="editedContent" placeholder="Contenido"></textarea>
+    <div class="button-group" *ngIf="isEditing">
+      <button class="save-button" (click)="updatePost()">Guardar</button>
+      <button class="cancel-button" (click)="toggleEdit()">Cancelar</button>
+    </div>
+  </div>
+
+  <h4>Comentarios</h4>
+  <div *ngIf="comments.length === 0">
+    <p>No hay comentarios aún.</p>
+  </div>
+  <div *ngFor="let comment of comments">
+    <p>{{ comment.text }}</p>
+  </div>
+
+  <h4>Agregar comentario</h4>
+  <input [(ngModel)]="newCommentText" placeholder="Escribe tu comentario" />
+  <div class="button-group">
+    <button (click)="addComment()" class="comment-button">Comentar</button>
+    <button routerLink="/" class="back-button" >Volver</button>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Cargando...</p>
+</ng-template>

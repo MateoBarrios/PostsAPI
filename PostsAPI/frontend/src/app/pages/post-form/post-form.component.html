@@ -1,0 +1,22 @@
+<h2>Crear Publicación</h2>
+
+<form (ngSubmit)="createPost()">
+  <label>Título:</label>
+  <input [(ngModel)]="title" name="title" required />
+
+  <label>Contenido:</label>
+  <textarea [(ngModel)]="content" name="content" required></textarea>
+
+  <label>Categoría:</label>
+<select [(ngModel)]="categoryId" name="category" required>
+  <option value="" disabled selected>Selecciona una categoría</option>
+  <option *ngFor="let category of categories" [value]="category.id">
+    {{ category.name }}
+  </option>
+</select>
+
+  <label>Archivo (opcional):</label>
+  <input type="file" (change)="onFileSelected($event)" />
+
+  <button type="submit" [disabled]="!title || !content || !categoryId">Crear</button>
+</form>

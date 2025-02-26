@@ -1,0 +1,21 @@
+<div class="list-container">
+  <h2>Publicaciones</h2>
+
+  <button class="create-button" routerLink="/new">Crear Publicación</button>
+
+  <div *ngIf="posts.length === 0" class="no-posts">No hay publicaciones disponibles.</div>
+
+  <ul class="post-list">
+    <li *ngFor="let post of posts" class="post-item">
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.content }}</p>
+      <button class="detail-button" (click)="verDetalle(post.id)">Ver Detalle</button>
+    </li>
+  </ul>
+
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="pageNumber === 1">Anterior</button>
+    <span>Página {{ pageNumber }}</span>
+    <button (click)="nextPage()" [disabled]="pageNumber * pageSize >= totalCount">Siguiente</button>
+  </div>
+</div>
