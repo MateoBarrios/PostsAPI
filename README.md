@@ -10,3 +10,4 @@
 8. Aquí en esta ruta deberá ejectur este comando("npm install").
 9. Cuando haya terminado deberá ejecutar este comando ("ng serve --open").
 10. Al ejecturse el comando anterior se abrirá una ventana automaicamente donde verá todo el front del proyecto.
+11. al momento de crear un post si no le aparece nada en select es porque tiene que agregar las categorias a la base de datos, porque desde allá es que se cargan.
